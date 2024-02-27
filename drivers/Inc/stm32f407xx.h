@@ -8,6 +8,10 @@
 #ifndef INC_STM32F407XX_H_
 #define INC_STM32F407XX_H_
 
+#include <stdint.h>
+
+#define __vo volatile
+
 /* Defining the base addresses of the Flash and SRAM memories */
 #define FLASH_BASEADDR (0x08000000U)
 #define SRAM1_BASEADDR (0x20000000U)
@@ -53,5 +57,28 @@
 #define USART1_BASEADDR (APB2PERIPH_BASEADDR + 0X1000)
 #define USART6_BASEADDR (APB2PERIPH_BASEADDR + 0X1400)
 #define SYSCFG_BASEADDR (APB2PERIPH_BASEADDR + 0X3800)
+
+/* Peripheral Register Definition Structures */
+
+/*
+ * Note : Registers of a peripheral are specific to MCU
+ * e.g. : Number of Registers of SPI peripheral of STM32F4x family's MCU may be different (more or less)
+ * Compare the number of registers of SPI peripherals of STM32Lx or STM32F0x family of MCUs
+ * Please check your device Reference Manual
+ *
+ */
+
+typedef struct
+{
+	__vo uint32_t MODER;    /*!< GPIO port mode register,				Address offset: 0x00 */
+	__vo uint32_t OTYPER;   /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t OSPEEDR;  /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t PUPDR;    /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t IDR;      /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t ODR;      /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t BSSR;     /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t LCKR;     /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AFR[2];   /*!< TODO: Add a short description,			Address offset:  */
+}GPIO_RegDef_t;
 
 #endif /* INC_STM32F407XX_H_ */
