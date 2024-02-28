@@ -58,6 +58,7 @@
 #define USART6_BASEADDR (APB2PERIPH_BASEADDR + 0X1400)
 #define SYSCFG_BASEADDR (APB2PERIPH_BASEADDR + 0X3800)
 
+
 /* Peripheral Register Definition Structures */
 
 /*
@@ -79,6 +80,18 @@ typedef struct
 	__vo uint32_t BSSR;     /*!< TODO: Add a short description,			Address offset:  */
 	__vo uint32_t LCKR;     /*!< TODO: Add a short description,			Address offset:  */
 	__vo uint32_t AFR[2];   /*!< TODO: Add a short description,			Address offset:  */
-}GPIO_RegDef_t;
+} GPIO_RegDef_t;
+
+/* Peripheral Definitions (peripheral base addresses typecasted to xx_RegDef_t) */
+
+#define GPIOA ((GPIO_RegDef_t*) GPIOA_BASEADDR);
+#define GPIOB ((GPIO_RegDef_t*) GPIOB_BASEADDR);
+#define GPIOC ((GPIO_RegDef_t*) GPIOC_BASEADDR);
+#define GPIOD ((GPIO_RegDef_t*) GPIOD_BASEADDR);
+#define GPIOE ((GPIO_RegDef_t*) GPIOE_BASEADDR);
+#define GPIOF ((GPIO_RegDef_t*) GPIOF_BASEADDR);
+#define GPIOG ((GPIO_RegDef_t*) GPIOG_BASEADDR);
+#define GPIOH ((GPIO_RegDef_t*) GPIOH_BASEADDR);
+#define GPIOI ((GPIO_RegDef_t*) GPIOI_BASEADDR);
 
 #endif /* INC_STM32F407XX_H_ */
