@@ -38,6 +38,7 @@
 #define GPIOI_BASEADDR (AHB1PERIPH_BASEADDR + 0X2000)
 #define GPIOJ_BASEADDR (AHB1PERIPH_BASEADDR + 0X2400)
 #define GPIOK_BASEADDR (AHB1PERIPH_BASEADDR + 0X2800)
+#define RCC_BASEADDR (AHB1PERIPH_BASEADDR + 0x3800)
 
 /* Base addresses of peripherals which are hanging on APB1 bus */
 #define I2C1_BASEADDR (APB1PERIPH_BASEADDR + 0X5400)
@@ -69,6 +70,7 @@
  *
  */
 
+/* Peripheral register definition structure for GPIO */
 typedef struct
 {
 	__vo uint32_t MODER;    /*!< GPIO port mode register,				Address offset: 0x00 */
@@ -82,16 +84,54 @@ typedef struct
 	__vo uint32_t AFR[2];   /*!< TODO: Add a short description,			Address offset:  */
 } GPIO_RegDef_t;
 
+/* Peripheral register definition structure for RCC */
+typedef struct
+{
+	__vo uint32_t CR;    			/*!< RCC clock control register,			Address offset: 0x00 */
+	__vo uint32_t PLLCFGR;   		/*!< RCC PLL configuration register,		Address offset: 0x04 */
+	__vo uint32_t CFGR;  			/*!< RCC clock configuration register,		Address offset: 0x08 */
+	__vo uint32_t CIR;    			/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB1RSTR;      	/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB2RSTR;      	/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB3RSTR;     	/*!< TODO: Add a short description,			Address offset:  */
+		 uint32_t RESERVED0;     	/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t APB1RSTR;   		/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t APB2RSTR;   		/*!< TODO: Add a short description,			Address offset:  */
+		 uint32_t RESERVED1[2];     /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB1ENR;   		/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB2ENR;   		/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB3ENR;   		/*!< TODO: Add a short description,			Address offset:  */
+		 uint32_t RESERVED2;     	/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t APB1ENR;   		/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t APB2ENR;   		/*!< TODO: Add a short description,			Address offset:  */
+		 uint32_t RESERVED3[2];     /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB1LPENR;   		/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB2LPENR;   		/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t AHB3LPENR;   		/*!< TODO: Add a short description,			Address offset:  */
+		 uint32_t RESERVED4;     	/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t APB1LPENR;   		/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t APB2LPENR;   		/*!< TODO: Add a short description,			Address offset:  */
+		 uint32_t RESERVED5[2];     /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t BDCR;   			/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t CSR;   			/*!< TODO: Add a short description,			Address offset:  */
+		 uint32_t RESERVED6[2];     /*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t SSCGR;   			/*!< TODO: Add a short description,			Address offset:  */
+	__vo uint32_t PLLI2SCFGR;   	/*!< TODO: Add a short description,			Address offset:  */
+} RCC_RegDef_t;
+
+
 /* Peripheral Definitions (peripheral base addresses typecasted to xx_RegDef_t) */
 
-#define GPIOA ((GPIO_RegDef_t*) GPIOA_BASEADDR);
-#define GPIOB ((GPIO_RegDef_t*) GPIOB_BASEADDR);
-#define GPIOC ((GPIO_RegDef_t*) GPIOC_BASEADDR);
-#define GPIOD ((GPIO_RegDef_t*) GPIOD_BASEADDR);
-#define GPIOE ((GPIO_RegDef_t*) GPIOE_BASEADDR);
-#define GPIOF ((GPIO_RegDef_t*) GPIOF_BASEADDR);
-#define GPIOG ((GPIO_RegDef_t*) GPIOG_BASEADDR);
-#define GPIOH ((GPIO_RegDef_t*) GPIOH_BASEADDR);
-#define GPIOI ((GPIO_RegDef_t*) GPIOI_BASEADDR);
+#define GPIOA ((GPIO_RegDef_t *) GPIOA_BASEADDR);
+#define GPIOB ((GPIO_RegDef_t *) GPIOB_BASEADDR);
+#define GPIOC ((GPIO_RegDef_t *) GPIOC_BASEADDR);
+#define GPIOD ((GPIO_RegDef_t *) GPIOD_BASEADDR);
+#define GPIOE ((GPIO_RegDef_t *) GPIOE_BASEADDR);
+#define GPIOF ((GPIO_RegDef_t *) GPIOF_BASEADDR);
+#define GPIOG ((GPIO_RegDef_t *) GPIOG_BASEADDR);
+#define GPIOH ((GPIO_RegDef_t *) GPIOH_BASEADDR);
+#define GPIOI ((GPIO_RegDef_t *) GPIOI_BASEADDR);
+
+#define RCC ((RCC_RegDef_t *) RCC_BASEADDR);
 
 #endif /* INC_STM32F407XX_H_ */
