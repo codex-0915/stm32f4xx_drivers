@@ -1,0 +1,7 @@
+# STM32Cube IDE projects ignored files
+
+.settings/
+.metadata/
+Debug/
+Release/
+*.launch
