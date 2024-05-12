@@ -19,21 +19,98 @@
 /***************************************************************************************************/
 
 /****************************************************************************************************
- * @fn 		        - GPIO_PeriClockControl
+ * @fn              - GPIO_PeriClockControl
  *
- * @brief		    - Enables or disables peripheral clock for the given GPIO port
+ * @brief           - Enables or disables peripheral clock for the given GPIO port
  * 
- * @param   		- *pGPIOx			base address if the gpio peripheral
- * @param   		- status		    Enable or Disable
+ * @param           - *pGPIOx           base address if the gpio peripheral
+ * @param           - status            Enable or Disable
  * 
- * @return			- None
+ * @return          - None
  * 
  * @note            - None
  *
  ***************************************************************************************************/
-void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t status)
+void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t Status)
 {
-
+    if (Status == ENABLE)
+    {
+        if (pGPIOx == GPIOA)
+        {
+            GPIOA_PCLK_EN();
+        }
+        else if (pGPIOx == GPIOB)
+        {
+            GPIOB_PCLK_EN();
+        }
+        else if (pGPIOx == GPIOC)
+        {
+            GPIOC_PCLK_EN();
+        }
+        else if (pGPIOx == GPIOD)
+        {
+            GPIOD_PCLK_EN();
+        }
+        else if (pGPIOx == GPIOE)
+        {
+            GPIOE_PCLK_EN();
+        }
+        else if (pGPIOx == GPIOF)
+        {
+            GPIOF_PCLK_EN();
+        }
+        else if (pGPIOx == GPIOG)
+        {
+            GPIOG_PCLK_EN();
+        }
+        else if (pGPIOx == GPIOH)
+        {
+            GPIOH_PCLK_EN();
+        }
+        else if (pGPIOx == GPIOI)
+        {
+            GPIOI_PCLK_EN();
+        }
+    }
+    else
+    {
+        if (pGPIOx == GPIOA)
+        {
+            GPIOA_PCLK_DI();
+        }
+        else if (pGPIOx == GPIOB)
+        {
+            GPIOB_PCLK_DI();
+        }
+        else if (pGPIOx == GPIOC)
+        {
+            GPIOC_PCLK_DI();
+        }
+        else if (pGPIOx == GPIOD)
+        {
+            GPIOD_PCLK_DI();
+        }
+        else if (pGPIOx == GPIOE)
+        {
+            GPIOE_PCLK_DI();
+        }
+        else if (pGPIOx == GPIOF)
+        {
+            GPIOF_PCLK_DI();
+        }
+        else if (pGPIOx == GPIOG)
+        {
+            GPIOG_PCLK_DI();
+        }
+        else if (pGPIOx == GPIOH)
+        {
+            GPIOH_PCLK_DI();
+        }
+        else if (pGPIOx == GPIOI)
+        {
+            GPIOI_PCLK_DI();
+        }
+    }
 }
 
 /****************************************************************************************************
@@ -129,7 +206,7 @@ void GPIO_WriteToInputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber, uint8_t Valu
  *
  * @brief		    - 
  * 
- * @param	    	- *pGPIOx			base address if the gpio peripheral        
+ * @param           - *pGPIOx			base address if the gpio peripheral        
  * @param           - Value             
  * 
  * @return			- None
@@ -174,7 +251,7 @@ void GPIO_ToogleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
  * @note            - None
  *
  ***************************************************************************************************/
-void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t status)
+void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t Status)
 {
 
 }

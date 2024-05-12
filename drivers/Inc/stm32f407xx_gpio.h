@@ -50,7 +50,7 @@ typedef struct
  ***************************************************************************************************/
 
 /* Peripheral Clock Setup */
-void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t status);
+void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t Status);
 
 /* GPIO Initialization and Deinitialization */
 void GPIO_Init(GPIO_Handle_t *pGPIOHandle);
@@ -64,7 +64,7 @@ void GPIO_WriteToOutputPort(GPIO_RegDef_t *pGPIOx, uint16_t Value);
 void GPIO_ToogleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 
 /* IRQ Configuration and ISR Handling */
-void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t status);
+void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t Status);
 void GPIO_IRQHandling(uint8_t PinNumber);
 
 #endif /* INC_STM32F407XX_GPIO_H_ */
