@@ -127,7 +127,13 @@ void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t Status)
  ***************************************************************************************************/
 void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 {
-
+    /* TODO:
+        1. Configure the mode of GPIO pin
+        2. Configure the speed
+        3. Configure the pupd settings
+        4. Configure the output type
+        5. Configure the alternative functionality
+    */
 }
 
 /****************************************************************************************************

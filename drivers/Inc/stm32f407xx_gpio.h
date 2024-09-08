@@ -40,6 +40,16 @@ typedef struct
 } GPIO_Handle_t;
 
 
+/* GPIO modes */
+#define GPIO_MODE_INPUT         (0)  /* GPIO Input Mode */
+#define GPIO_MODE_OUTPUT        (1)  /* GPIO Output Mode */
+#define GPIO_MODE_ALTFUNC       (2)  /* GPIO Alternate Function Mode */
+#define GPIO_MODE_ANALOG        (3)  /* GPIO Analog Mode */
+#define GPIO_MODE_IT_FT         (4)  /* Input Mode Falling Edge */
+#define GPIO_MODE_IT_RT         (5)  /* Input Mode Rising Edge */
+#define GPIO_MODE_IT_FTRT       (6)  /* Input Mode Falling-Rising Edge */
+
+
 /***************************************************************************************************/
 /********************************************** Prototypes *****************************************/
 /***************************************************************************************************/
