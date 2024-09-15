@@ -173,7 +173,11 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
     /* Configure the Alternate Functionality of GPIO pin */
     if (pGPIOHandle->GPIO_PinCfg.GPIO_PinMode == GPIO_MODE_ALTFUNC)
     {
-        
+        uint8_t temp1, temp2;
+
+        temp1 = pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber / 8;
+        temp2 = pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber % 8;
+        pGPIOHandle->pGPIOx->AFR[temp1] |= (pGPIOHandle->GPIO_PinCfg.GPIO_PinAltFunMode << (4 * temp1));
     }
 }
 
