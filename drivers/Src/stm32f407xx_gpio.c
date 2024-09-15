@@ -141,7 +141,8 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
     if (pGPIOHandle->GPIO_PinCfg.GPIO_PinMode <= GPIO_MODE_ANALOG)
     {
         temp_reg = (pGPIOHandle->GPIO_PinCfg.GPIO_PinMode << (2 * pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber));
-        pGPIOHandle->pGPIOx->MODER |= temp_reg;
+        pGPIOHandle->pGPIOx->MODER &= ~( 0x3 << pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber); // Register reset
+        pGPIOHandle->pGPIOx->MODER |= temp_reg; // Register set
         temp_reg = 0;
     }
     /* Configure the Interrupt Mode of GPIO pin */
@@ -154,19 +155,22 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 
     /* Configure the speed of GPIO pin */
     temp_reg = pGPIOHandle->GPIO_PinCfg.GPIO_PinSpeed << (2 * pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber);
-    pGPIOHandle->pGPIOx->OSPEEDR |= temp_reg;
+    pGPIOHandle->pGPIOx->OSPEEDR &= ~( 0x3 << pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber); // Register reset
+    pGPIOHandle->pGPIOx->OSPEEDR |= temp_reg; // Register set
 
     temp_reg = 0;
 
     /* Configure the Pullup-Pulldown settings of GPIO pin */
     temp_reg = pGPIOHandle->GPIO_PinCfg.GPIO_PinPuPdControl << (2 * pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber);
-    pGPIOHandle->pGPIOx->PUPDR |= temp_reg;
+    pGPIOHandle->pGPIOx->PUPDR &= ~( 0x3 << pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber); // Register reset
+    pGPIOHandle->pGPIOx->PUPDR |= temp_reg; // Register set
 
     temp_reg = 0;
 
     /* Configure the Output Type of GPIO pin */
     temp_reg = pGPIOHandle->GPIO_PinCfg.GPIO_PinOPType << pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber;
-    pGPIOHandle->pGPIOx->OTYPER |= temp_reg;
+    pGPIOHandle->pGPIOx->OTYPER &= ~( 0x1 << pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber); // Register reset
+    pGPIOHandle->pGPIOx->OTYPER |= temp_reg; // Register set
 
     temp_reg = 0;
 
@@ -177,7 +181,8 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 
         temp1 = pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber / 8;
         temp2 = pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber % 8;
-        pGPIOHandle->pGPIOx->AFR[temp1] |= (pGPIOHandle->GPIO_PinCfg.GPIO_PinAltFunMode << (4 * temp1));
+        pGPIOHandle->pGPIOx->AFR[temp1] &= ~( 0xF << pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber); // Register reset
+        pGPIOHandle->pGPIOx->AFR[temp1] |= (pGPIOHandle->GPIO_PinCfg.GPIO_PinAltFunMode << (4 * temp1)); // Register set
     }
 }
 
