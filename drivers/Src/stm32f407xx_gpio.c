@@ -129,14 +129,6 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 {
     uint32_t temp_reg = 0; // temporary register holder
 
-    /* TODO:
-        1. Configure the mode of GPIO pin
-        2. Configure the speed
-        3. Configure the pupd settings
-        4. Configure the output type
-        5. Configure the alternative functionality
-    */
-
     /* Configure the Non-Interrupt Mode of GPIO pin */
     if (pGPIOHandle->GPIO_PinCfg.GPIO_PinMode <= GPIO_MODE_ANALOG)
     {
