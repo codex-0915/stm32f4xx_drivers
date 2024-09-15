@@ -127,6 +127,8 @@ void GPIO_PeriClockControl(GPIO_RegDef_t *pGPIOx, uint8_t Status)
  ***************************************************************************************************/
 void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 {
+    uint32_t temp_reg = 0; // temporary register holder
+
     /* TODO:
         1. Configure the mode of GPIO pin
         2. Configure the speed
@@ -134,6 +136,45 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
         4. Configure the output type
         5. Configure the alternative functionality
     */
+
+    /* Configure the Non-Interrupt Mode of GPIO pin */
+    if (pGPIOHandle->GPIO_PinCfg.GPIO_PinMode <= GPIO_MODE_ANALOG)
+    {
+        temp_reg = (pGPIOHandle->GPIO_PinCfg.GPIO_PinMode << (2 * pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber));
+        pGPIOHandle->pGPIOx->MODER |= temp_reg;
+        temp_reg = 0;
+    }
+    /* Configure the Interrupt Mode of GPIO pin */
+    else 
+    {
+        /* TODO: Configure the interrupt mode of GPIO pin */
+    }
+
+    temp_reg = 0;
+
+    /* Configure the speed of GPIO pin */
+    temp_reg = pGPIOHandle->GPIO_PinCfg.GPIO_PinSpeed << (2 * pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber);
+    pGPIOHandle->pGPIOx->OSPEEDR |= temp_reg;
+
+    temp_reg = 0;
+
+    /* Configure the Pullup-Pulldown settings of GPIO pin */
+    temp_reg = pGPIOHandle->GPIO_PinCfg.GPIO_PinPuPdControl << (2 * pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber);
+    pGPIOHandle->pGPIOx->PUPDR |= temp_reg;
+
+    temp_reg = 0;
+
+    /* Configure the Output Type of GPIO pin */
+    temp_reg = pGPIOHandle->GPIO_PinCfg.GPIO_PinOPType << pGPIOHandle->GPIO_PinCfg.GPIO_PinNumber;
+    pGPIOHandle->pGPIOx->OTYPER |= temp_reg;
+
+    temp_reg = 0;
+
+    /* Configure the Alternate Functionality of GPIO pin */
+    if (pGPIOHandle->GPIO_PinCfg.GPIO_PinMode == GPIO_MODE_ALTFUNC)
+    {
+        
+    }
 }
 
 /****************************************************************************************************
